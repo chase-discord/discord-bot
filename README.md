@@ -1,6 +1,15 @@
 # Chase Discord Bot
 A Discord bot for use on the Chase Discord server
 
+<!-- TOC -->
+
+- [Production](#production)
+- [Development](#development)
+  - [Using pipenv](#using-pipenv)
+  - [Using regular pip](#using-regular-pip)
+
+<!-- /TOC -->
+
 ## Production
 
 This bot is automatically built and run from the `master` branch and will automatically update once changes have been committed.
