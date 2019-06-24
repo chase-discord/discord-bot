@@ -1,32 +1,28 @@
-import discord
-from commands import subjects
+from discord.ext import commands
 import os
 import sys
 from logzero import logger
 
-client = discord.Client()
+bot = commands.Bot(command_prefix="!")
 
 
-@client.event
+@bot.event
 async def on_ready():
-    logger.info("Logged in as {}".format(client.user))
-
-
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    message_split = message.split()
-    if message_split[0] == "!c":
-        if message_split[1] == "subjects":
-            subjects.handle(client, message, message_split)
-        else:
-            print("return message saying invalid command")
+    logger.info("Logged in as {}".format(bot.user))
 
 
 if os.getenv("TOKEN") is None:
-    logger.error("Please set the 'TOKEN' environment variable to the Discord token.")
+    logger.error("Please set the 'TOKEN' environment variable to the Discord" +
+                 "token.")
     sys.exit(1)
 
-client.run(os.getenv("TOKEN"))
+count = 0
+
+for file in os.listdir("cogs"):
+    if file.endswith(".py"):
+        count += 1
+        bot.load_extension("cogs.{}".format(file[:-3]))
+
+logger.info("Loaded {} cog(s)".format(count))
+
+bot.run(os.getenv("TOKEN"))
