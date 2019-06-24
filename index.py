@@ -1,6 +1,11 @@
 import discord
 import aiohttp
 
+#================
+from commands import subjects
+
+#================
+
 f = open("token.txt", "r")
 token = f.read()
 print(token)
@@ -16,7 +21,12 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+    message_split = message.split()
+    if message_split[0] == "!c":
+        if message_split[1] == "subjects":
+            subjects.handle(client, message, message_split)
+        else
+            print("return message saying invalid command")
+    
 
 client.run(token)
