@@ -7,15 +7,15 @@ class Information(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(name="ping", description="Check your connection and the bot's latency to Discord.")
     async def ping(self, ctx):
         """Pong!"""
         before = time.monotonic()
         message = await ctx.send("Pong")
         ping = (time.monotonic() - before) * 1000
-        await message.edit(content="Pong -> **{}ms**".format(round(ping, 2)))
+        await message.edit(content="Pong → **{}ms**".format(round(ping, 2)))
 
-    @commands.command(aliases=["join"])
+    @commands.command()
     async def invite(self, ctx):
         """Send bot invite link"""
         await ctx.send("🌐 Invite me to your Discord server using this URL:\n" +
