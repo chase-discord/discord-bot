@@ -3,11 +3,17 @@ A Discord bot for use on the Chase Discord server
 
 <!-- TOC -->
 
+- [Pull Requests](#pull-requests)
 - [Development](#development)
-  - [Using pipenv](#using-pipenv)
-  - [Using regular pip](#using-regular-pip)
+    - [Using pipenv](#using-pipenv)
+    - [Using regular pip](#using-regular-pip)
 
 <!-- /TOC -->
+
+## Pull Requests
+
+We don't allow any commits to the master branch. All commits must be made in seperate branches and must have a pull request
+to the master branch.
 
 ## Development
 
