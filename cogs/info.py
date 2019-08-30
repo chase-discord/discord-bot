@@ -1,6 +1,7 @@
 from discord.ext import commands
 import discord
 import time
+import gitinfo
 
 
 class Information(commands.Cog):
@@ -25,11 +26,14 @@ class Information(commands.Cog):
     @commands.command(aliases=["info"])
     async def about(self, ctx):
         """About the bot"""
+        git = gitinfo.get_git_info()
+
         embed = discord.Embed(title="About Chase Discord Bot")
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
         embed.add_field(name="Servers", value=len(ctx.bot.guilds), inline=True)
         embed.add_field(name="Commands Loaded", value=len(
             [x.name for x in self.bot.commands]), inline=True)
+        embed.add_field(name="Version", value="{} ({}) by {}".format(git.commit[:6], git.message, git.author))
         await ctx.send(embed=embed)
 
 
