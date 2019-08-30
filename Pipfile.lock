@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b88929091342622880489d27f3c98bd674be216551c7ad58f63775df1b0429c4"
+            "sha256": "77ae7eebe0987960cbb8bdc6c55157b3fa78d8b029a335d56137a9d77bcc7d3f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -64,12 +64,20 @@
             ],
             "version": "==3.0.4"
         },
+        "colorama": {
+            "hashes": [
+                "sha256:05eed71e2e327246ad6b38c540c4a3117230b19679b875190486ddd2d721422d",
+                "sha256:f8ac84de7840f5b9c4e3347b3c1eaa50f7e49c2b07596221daec5edaabbd7c48"
+            ],
+            "markers": "sys_platform == 'win32'",
+            "version": "==0.4.1"
+        },
         "discord-py": {
             "hashes": [
-                "sha256:ee6ee8f52145e550f534c1858169fa49f3b355ad708a021cd59a934ee963ccc7"
+                "sha256:4684733fa137cc7def18087ae935af615212e423e3dbbe3e84ef01d7ae8ed17d"
             ],
             "index": "pypi",
-            "version": "==1.2.2"
+            "version": "==1.2.3"
         },
         "idna": {
             "hashes": [
@@ -119,6 +127,13 @@
                 "sha256:db603a1c235d110c860d5f39988ebc8218ee028f07a7cbc056ba6424372ca31b"
             ],
             "version": "==4.5.2"
+        },
+        "python-git-info": {
+            "hashes": [
+                "sha256:75ba1016873b014e17263ba512b9bd0304de2a55f1724858bd48cce932f49702"
+            ],
+            "index": "pypi",
+            "version": "==0.6.1"
         },
         "websockets": {
             "hashes": [
@@ -180,11 +195,11 @@
         },
         "flake8": {
             "hashes": [
-                "sha256:859996073f341f2670741b51ec1e67a01da142831aa1fdc6242dbf88dffbe661",
-                "sha256:a796a115208f5c03b18f332f7c11729812c8c3ded6c46319c59b53efd3819da8"
+                "sha256:19241c1cbc971b9962473e4438a2ca19749a7dd002dd1a946eaba171b4114548",
+                "sha256:8e9dfa3cecb2400b3738a42c54c3043e821682b9c840b0448c0503f781130696"
             ],
             "index": "pypi",
-            "version": "==3.7.7"
+            "version": "==3.7.8"
         },
         "mccabe": {
             "hashes": [

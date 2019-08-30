@@ -10,6 +10,7 @@ autopep8 = "*"
 [packages]
 discord-py = "*"
 logzero = "*"
+python-git-info = "*"
 
 [requires]
 python_version = "3.7"
