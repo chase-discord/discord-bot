@@ -30,9 +30,9 @@ class Information(commands.Cog):
 
         embed = discord.Embed(title="About Chase Discord Bot")
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
-        embed.add_field(name="Servers", value=len(ctx.bot.guilds), inline=True)
-        embed.add_field(name="Commands Loaded", value=len(
-            [x.name for x in self.bot.commands]), inline=True)
+        embed.add_field(name="Servers", value=str(len(ctx.bot.guilds)), inline=True)
+        embed.add_field(name="Commands Loaded", value=str(len(
+            [x.name for x in self.bot.commands])), inline=True)
         embed.add_field(name="Version", value="{} ({}) by {}".format(git.commit[:6], git.message, git.author))
         await ctx.send(embed=embed)
 
