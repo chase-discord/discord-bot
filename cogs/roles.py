@@ -19,6 +19,17 @@ def get_allowed_roles(ctx, bot):
     return output
 
 
+def get_role_by_name(role_name, ctx, bot):
+    role_list = get_allowed_roles(ctx, bot)
+    role_name = role_name.lower().trim()
+
+    if role_name not in [r.name for r in role_list]:
+        await ctx.send("❌ Sorry, that role wasn't found!")
+        return
+
+    return next((r for r in role_list if r.name == role_name), None)
+
+
 class Roles(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -29,19 +40,13 @@ class Roles(commands.Cog):
         """List all of the available roles in the server"""
         role_list = get_allowed_roles(ctx, self.bot)
 
-        await ctx.send("Here are available roles to join: {}\n\n_Use the `{}` command to join one of these roles._".format(", ".join(["`{}`".format(r.name) for r in role_list]), ctx.bot.command_prefix + "join"))
+        await ctx.send("Here are available roles to join: {}\n\n_Use the `{}` command to join one of these roles._".format(", ".join(["`{}`".format(r.name.lower()) for r in role_list]), ctx.bot.command_prefix + "join"))
 
     @commands.command()
     @commands.guild_only()
     async def join(self, ctx, arg_role):
         """Join a role in the server"""
-        role_list = get_allowed_roles(ctx, self.bot)
-
-        if arg_role not in [r.name for r in role_list]:
-            await ctx.send("❌ Sorry, that role wasn't found!")
-            return
-
-        role = next((r for r in role_list if r.name == arg_role), None)
+        role = get_role_by_name(arg_role, ctx, self.bot)
 
         try:
             await ctx.author.add_roles(role, reason="Automated Role")
@@ -55,17 +60,10 @@ class Roles(commands.Cog):
     @commands.guild_only()
     async def leave(self, ctx, arg_role):
         """Leave a role in the server"""
-        role_list = get_allowed_roles(ctx, self.bot)
-
-        if arg_role not in [r.name for r in role_list]:
-            await ctx.send("❌ Sorry, that role wasn't found!")
-            return
-
-        role = next((r for r in role_list if r.name == arg_role), None)
+        role = get_role_by_name(arg_role, ctx, self.bot)
 
         await ctx.author.remove_roles(role, reason="Automated Role")
         await ctx.send("✔️ Your roles have been updated!")
-
 
     @join.error
     @leave.error
