@@ -39,10 +39,9 @@ class Roles(commands.Cog):
     async def roles(self, ctx):
         """List all of the available roles in the server"""
         role_list = get_allowed_roles(ctx, self.bot)
+        role_list = ", ".join(["`{}`".format(r.name.lower()) for r in role_list])
 
-        await ctx.send("Here are available roles to join: {}\n\n_Use the `{}` command to join one of these" +
-                       "roles._".format(", ".join(["`{}`".format(r.name.lower()) for r in role_list]),
-                                        ctx.bot.command_prefix + "join"))
+        await ctx.send("Here are available roles to join: {}\n\n_Use the `{}` command to join one of these roles._".format(role_list, ctx.bot.command_prefix + "join"))
 
     @commands.command()
     @commands.guild_only()

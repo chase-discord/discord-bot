@@ -7,7 +7,8 @@ class Information(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="ping", description="Check your connection and the bot's latency to Discord.")
+    @commands.command(name="ping", description="Check your connection and the"
+                      + "bot's latency to Discord.")
     async def ping(self, ctx):
         """Pong!"""
         before = time.monotonic()
@@ -27,7 +28,8 @@ class Information(commands.Cog):
         """About the bot"""
         embed = discord.Embed(title="About Chase Discord Bot")
         embed.set_thumbnail(url=ctx.bot.user.avatar_url)
-        embed.add_field(name="Servers", value=str(len(ctx.bot.guilds)), inline=True)
+        embed.add_field(name="Servers", value=str(len(ctx.bot.guilds)),
+                        inline=True)
         embed.add_field(name="Commands Loaded", value=str(len(
             [x.name for x in self.bot.commands])), inline=True)
         await ctx.send(embed=embed)
