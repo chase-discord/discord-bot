@@ -32,6 +32,9 @@ class Information(commands.Cog):
                         inline=True)
         embed.add_field(name="Commands Loaded", value=str(len(
             [x.name for x in self.bot.commands])), inline=True)
+        embed.add_field(name="Repository",
+                        value="https://github.com/chase-discord/discord-bot",
+                        inline=True)
         await ctx.send(embed=embed)
 
 
