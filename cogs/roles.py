@@ -39,9 +39,12 @@ class Roles(commands.Cog):
     async def roles(self, ctx):
         """List all of the available roles in the server"""
         role_list = get_allowed_roles(ctx, self.bot)
-        role_list = ", ".join(["`{}`".format(r.name.lower()) for r in role_list])
+        role_list = ", ".join(["`{}`".format(r.name.lower())
+                               for r in role_list])
 
-        await ctx.send("Here are available roles to join: {}\n\n_Use the `{}` command to join one of these roles._".format(role_list, ctx.bot.command_prefix + "join"))
+        await ctx.send(("Here are available roles to join: {}\n\n_Use the `{}`"
+                        " command to join one of these roles._").format(
+                            role_list, ctx.bot.command_prefix + "join"))
 
     @commands.command()
     @commands.guild_only()
@@ -70,7 +73,8 @@ class Roles(commands.Cog):
     @leave.error
     async def role_error(self, ctx, error):
         if isinstance(error, MissingRequiredArgument):
-            await ctx.send("⚠️ Make sure you add a role after the command (e.g `!join maths`)")
+            await ctx.send(("⚠️ Make sure you add a role after the command "
+                            "(e.g `!join maths`)"))
 
 
 def setup(bot):
