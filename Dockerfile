@@ -1,10 +1,13 @@
-FROM python:alpine
+FROM python:3.7-alpine
 
-LABEL Name=chase-discord-bot Version=0.0.1
+LABEL com.centurylinklabs.watchtower.enable="true"
+
+RUN apk add --no-cache git
 
 WORKDIR /app
 ADD . /app
 
-RUN python3 -m pip install pipenv
-RUN pipenv install --ignore-pipfile
-CMD ["pipenv", "run", "python3", "-m", "index"]
+RUN pip install --upgrade pip pipenv
+RUN pipenv install --system
+
+CMD ["python3", "-m", "index"]
